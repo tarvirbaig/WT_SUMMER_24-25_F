@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>form</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <h1 class="center">DONAR INFORMATION</h1>
+    <form action="" id="myform">
+        <label for="fname">First name:</label>
+        <input type="text" id="fname" name="fname" required /><br><br>
+
+        <label for="lname">Last name:</label>
+        <input type="text" id="lname" name="lname" required /><br><br>
+
+        <label for="">Adress:</label>
+        <input type="text" id="add1"required /><br><br>
+
+
+        <label for="">City:</label>
+        <input type="text" id="city1" required /><br><br>
+
+        <label for="">Sate:</label>
+        <select name="" id="" required>
+            <option value="">Select a state</option>
+            <option value="">BRAHBANBARIA</option>
+            <option value="">SYLHET</option>
+        </select><br><br>
+
+
+        <label for="">Phone:</label>
+        <input type="text" id="phone" required /><br><br>
+
+
+        <label for="">Email:</label>
+        <input type="text" id="email" required /><br><br>
+
+        <label for="">City:</label>
+        <input type="text" required /><br><br>
+
+        <label for="">Donation amount:</label>
+        <input type="radio" name="si" required />None
+        <input type="radio" name="si" />500 BDT
+        <input type="radio" name="si" />1000 BDT
+        <input type="radio" name="si" />2000 BDT
+        <input type="radio" name="si" />3000 BDT
+        <input type="radio" name="si" />Other
+        <label for="">Other Amount $</label>
+        <input type="text" name="si" required /><br><br>
+        <input type="checkbox" /> i am interested in giving on a regular basis<br><br>
+
+        <h1 class="center">Additional Information</h1>
+
+        <input type="checkbox" id="chck1"/>I would like my gift to remain anonymous<br><br>
+        <input type="checkbox" id="chck2"/> My comployer offers a matching gift program .<br><br>
+        <input type="checkbox"id="chck3" /> Please don't send a thank you letter.<br><br>
+
+        <label for="">Comments:</label><br>
+        <textarea name="" id="" cols="50" rows="20" required></textarea><br><br>
+
+
+        <button>Reset</button>
+        <button>Submit</button>
+
+    </form>
+     <script>
+    document.getElementById("myform").addEventListener("Continue", function (e) {
+      const fname = document.getElementById("fname").value.trim();
+      const lname = document.getElementById("lname").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const phone = document.getElementById("phone").value.trim();
+
+      let isValid = true;
+      let errorMsg = "";
+
+      // First name
+      if (fname === "") {
+        errorMsg += "First name is required.\n";
+        isValid = false;
+      }
+
+      // Last name
+      if (lname === "") {
+        errorMsg += "Last name is required.\n";
+        isValid = false;
+      }
+
+      // Email format check
+      const emailPattern = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;
+      if (!emailPattern.test(email)) {
+        errorMsg += "Please enter a valid email address.\n";
+        isValid = false;
+      }
+
+      // Phone number check (exactly 11 digits)
+const phonePattern = /^[0-9]{11}$/;
+if (!phonePattern.test(phone)) {
+  errorMsg += "Please enter a valid phone number (exactly 11 digits).\n";
+  isValid = false;
+}
+
+      // If any errors found, prevent form submission
+      if (!isValid) {
+        alert(errorMsg);
+        e.preventDefault();
+      }
+    });
+  </script>
+</body>
+</html>
